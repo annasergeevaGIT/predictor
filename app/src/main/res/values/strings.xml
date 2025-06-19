@@ -2,4 +2,15 @@
     <string name="app_name">Predictor</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="welcome_to_crypto_predictor">Welcome to Crypto Predictor!</string>
+    <string name="go_to_prediction">Go to Prediction</string>
+    <string name="settings">Settings</string>
+    <string name="notification_settings">Notification Settings</string>
+    <string name="notification_frequency">Notification Frequency:</string>
+    <string name="daily">Daily</string>
+    <string name="weekly">Weekly</string>
+    <string name="monthly">Monthly</string>
+    <string name="sensor_data_light_sensor">Sensor Data (Light Sensor)</string>
+    <string name="today_s_prediction">Today\'s Prediction</string>
+    <string name="enable_notifications">Enable Notifications</string>
 </resources>

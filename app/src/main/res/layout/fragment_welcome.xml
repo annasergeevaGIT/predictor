@@ -6,14 +6,16 @@
     tools:context=".ui.welcome.WelcomeFragment"> <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingTop="?attr/actionBarSize"
     android:orientation="vertical"
     android:gravity="center"
-    android:padding="16dp">
+    android:padding="16dp"
+    tools:ignore="UselessParent">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome to Crypto Predictor!"
+        android:text="@string/welcome_to_crypto_predictor"
         android:textSize="24sp"
         android:textStyle="bold"
         android:layout_marginBottom="16dp"/>
@@ -30,14 +32,14 @@
         android:id="@+id/button_go_to_prediction"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Go to Prediction"
+        android:text="@string/go_to_prediction"
         android:layout_marginBottom="8dp"/>
 
     <Button
         android:id="@+id/button_go_to_settings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Settings"/>
+        android:text="@string/settings"/>
 
 </LinearLayout>
 

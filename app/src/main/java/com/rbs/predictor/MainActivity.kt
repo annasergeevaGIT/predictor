@@ -1,10 +1,15 @@
-package com.rbs.predictor // Use your actual root package name
+package com.rbs.predictor
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import androidx.appcompat.widget.Toolbar
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.NavController
+import androidx.navigation.ui.setupWithNavController
 import com.google.firebase.auth.FirebaseAuth
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,22 +22,51 @@ class MainActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar) // Set the Toolbar as the app's action bar
+
+        supportActionBar?.setDisplayShowTitleEnabled(false) // default title disabled
+
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
 
-        // Check if the user is currently signed in (authentication logic goes here later)
-        val currentUser = auth.currentUser
+        // Get a reference to your BottomNavigationView
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_nav)
 
-        // --- Authentication Navigation Logic Placeholder ---
-        // In a real app with login:
-        // If currentUser is null, navigate to a Login/Welcome screen.
-        // If currentUser is not null, you might navigate directly to the Prediction screen
-        // (or check subscription status first).
-        // For now, the nav_graph's start destination (Welcome) will be shown by default.
-        // You'll add navigation logic here in a later step.
-        // ---------------------------------------------------
+        // Set up BottomNavigationView with NavController
+        bottomNavigationView.setupWithNavController(navController)
+
+        // Listen to navigation changes to update the toolbar title
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            supportActionBar?.title = destination.label // This will update toolbar title based on fragment label
+        }
+
+        val currentUser = auth.currentUser // Authentication Navigation Logic
+    }
+    //region Top Menu (Overflow Menu) Handling
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        // Inflate the top_nav_menu.xml to create the overflow menu items
+        menuInflater.inflate(R.menu.top_nav_menu, menu)
+        return true
     }
 
-    // You might add methods here later to handle Google Sign-In results if using a sign-in button
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle item clicks from the top overflow menu
+        return when (item.itemId) {
+            R.id.welcomeFragment -> {
+                navController.navigate(R.id.welcomeFragment)
+                true
+            }
+            R.id.predictionFragment -> {
+                navController.navigate(R.id.predictionFragment)
+                true
+            }
+            R.id.settingsFragment -> {
+                navController.navigate(R.id.settingsFragment)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
 }

@@ -1,4 +1,4 @@
-package com.rbs.predictor.data // Use your data package name
+package com.rbs.predictor.data
 
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
@@ -11,7 +11,7 @@ class PredictionRepository {
     private val firestore = FirebaseFirestore.getInstance()
     private val predictionsCollection = firestore.collection("predictions")
 
-    // Function to get today's date in YYYY-MM-DD format
+    // get today's date in YYYY-MM-DD format
     private fun getTodayDateString(): String {
         val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
         return dateFormat.format(Date())
