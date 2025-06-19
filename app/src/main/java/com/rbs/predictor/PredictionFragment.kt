@@ -1,4 +1,4 @@
-package com.rbs.predictor.ui.prediction // Use your UI prediction package name
+package com.rbs.predictor
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import com.rbs.predictor.databinding.FragmentPredictionBinding // Use your root package for binding
+import com.rbs.predictor.databinding.FragmentPredictionBinding
 import com.rbs.predictor.data.PredictionRepository // Import PredictionRepository
 import com.rbs.predictor.viewmodel.PredictionViewModel // Import PredictionViewModel
 import com.rbs.predictor.viewmodel.PredictionViewModelFactory // Import PredictionViewModelFactory

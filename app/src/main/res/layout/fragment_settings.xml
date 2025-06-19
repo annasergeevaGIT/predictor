@@ -3,13 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.settings.SettingsFragment">
+    android:paddingTop="?attr/actionBarSize"
+    tools:context=".SettingsFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="16dp"
+        tools:ignore="UselessParent">
 
         <TextView
             android:layout_width="wrap_content"
@@ -22,21 +24,56 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Notification Settings (Placeholder)"
+            android:text="@string/notification_settings"
             android:textSize="18sp"
             android:layout_marginBottom="8dp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
+        <Switch
+            android:id="@+id/switch_notifications_enabled"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Future feature: Choose how you want to be notified (e.g., push notification, email)."
+            android:text="@string/enable_notifications"
             android:textSize="16sp"
-            android:layout_marginBottom="24dp"/>
+            android:layout_marginBottom="16dp"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sensor Data (Light Sensor)"
+            android:text="@string/notification_frequency"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp"/>
+
+        <RadioGroup
+            android:id="@+id/radio_group_notification_frequency"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="24dp">
+
+            <RadioButton
+                android:id="@+id/radio_daily"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/daily" />
+
+            <RadioButton
+                android:id="@+id/radio_weekly"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/weekly" />
+
+            <RadioButton
+                android:id="@+id/radio_monthly"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/monthly" />
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sensor_data_light_sensor"
             android:textSize="18sp"
             android:layout_marginBottom="8dp"/>
 
@@ -46,7 +83,6 @@
             android:layout_height="wrap_content"
             android:textSize="16sp"
             tools:text="Light level: 100.0 lux"/>
-
 
     </LinearLayout>
 

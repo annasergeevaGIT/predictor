@@ -1,12 +1,12 @@
-package com.rbs.predictor.viewmodel // Use your viewmodel package name
+package com.rbs.predictor.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.rbs.predictor.data.PredictionRepository // Import from your data package
-import com.rbs.predictor.data.PredictionResult // Import from your data package
+import com.rbs.predictor.data.PredictionRepository
+import com.rbs.predictor.data.PredictionResult
 import kotlinx.coroutines.launch
 
 class PredictionViewModel(private val repository: PredictionRepository) : ViewModel() {
@@ -18,11 +18,10 @@ class PredictionViewModel(private val repository: PredictionRepository) : ViewMo
     // Sealed class INSIDE ViewModel to represent the UI state
     sealed class PredictionResultState {
         object Loading : PredictionResultState()
-        data class Success(val date: String, val coin: String) : PredictionResultState() // Note: Uses data from PredictionResult.Success
-        data class Error(val message: String) : PredictionResultState()           // Note: Uses data from PredictionResult.Error
-        data class NotFound(val message: String) : PredictionResultState()         // Note: Uses data from PredictionResult.NotFound
+        data class Success(val date: String, val coin: String) : PredictionResultState() // data from PredictionResult.Success
+        data class Error(val message: String) : PredictionResultState()           // data from PredictionResult.Error
+        data class NotFound(val message: String) : PredictionResultState()         // data from PredictionResult.NotFound
     }
-
 
     fun fetchDailyPrediction() {
         _prediction.value = PredictionResultState.Loading // Indicate loading started
